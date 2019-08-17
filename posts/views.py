@@ -30,6 +30,15 @@ posts = [
         },
         'timestamp':datetime.now().strftime('%b %dth, %Y - %H hrs'),
         'photo':'https://picsum.photos/500/700/?image=1076'
+    },
+    {
+        'title':'Another World',
+        'user':{
+            'name':'k4is3r',
+            'picture':'https://picsum.photos/60/60/?image=1006'
+        },
+        'timestamp':datetime.now().strftime('%b %dth, %Y - %H hrs'),
+        'photo':'https://picsum.photos/500/700/?image=1077'
     }
 ]
 
