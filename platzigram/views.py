@@ -20,3 +20,12 @@ def sorted_int(request):
         'message': 'Integers sorted successfully'
     }
     return HttpResponse(json.dumps(data, indent=4), content_type='application/json')
+
+
+def say_hi(request, name, age):
+    if age < 12:
+        message = 'Sorry {} you are not allowed here'.format(name)
+    else:
+        message = 'Welcome {}, to platzigram'.format(name)
+
+    return HttpResponse(message)
