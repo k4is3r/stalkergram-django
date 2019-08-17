@@ -5,6 +5,7 @@ from platzigram import views
 
 urlpatterns = [
     path('hello-world/', views.hello_world),
-    path('hi/', views.hi),
+    path('sorted/', views.sorted_int),
+    path('hi/<str:name>/<')
 ]
 #    path('admin/', admin.site.urls),
