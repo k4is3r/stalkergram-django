@@ -1,0 +1,15 @@
+{% extends "users/base.html"%} 
+{% block head_content %}
+<title>StalkerGram - Sign in</title>
+{% endblock%} 
+{% block container%}
+{% if error %}
+<p style="color:Red;">{{ error }}</p>
+{% endif %}
+<form action="{% url "login" %}" method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="Username" name="username">
+    <input type="password" placeholder="Password" name="password">
+    <button type="submit">Sign In</button>
+</form>
+{% endblock %}
