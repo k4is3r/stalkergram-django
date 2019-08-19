@@ -1,15 +1,19 @@
 {% extends "users/base.html"%} 
 {% block head_content %}
-<title>StalkerGram - Sign in</title>
+    <title>StalkerGram - Sign in</title>
 {% endblock%} 
 {% block container%}
 {% if error %}
-<p style="color:Red;">{{ error }}</p>
+<p class="alert alert-danger">{{ error }}</p>
 {% endif %}
-<form action="{% url "login" %}" method="POST">
-    {% csrf_token %}
-    <input type="text" placeholder="Username" name="username">
-    <input type="password" placeholder="Password" name="password">
-    <button type="submit">Sign In</button>
-</form>
+    <form action="{% url "login" %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" placeholder="Username" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+                <input type="password" placeholder="Password" name="password" class="form-control">
+        </div>
+        <button class="btn-primary btn-block mt-5" type="submit">SignIn !</button>
+    </form>
 {% endblock %}
