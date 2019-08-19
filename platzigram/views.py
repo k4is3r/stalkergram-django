@@ -11,12 +11,12 @@ def hello_world(request):
     return HttpResponse('Hello coders! current time server is {}'.format(now))
 
 
-def sorted_int(request):
+def sorted_integers(request):
     numbers = [int(i) for i in request.GET['numbers'].split(',')]
-    sorted_int = sorted(numbers)
+    sorted_ints = sorted(numbers)
     data = {
         'status': 'ok',
-        'numbers': sorted_int,
+        'numbers': sorted_ints,
         'message': 'Integers sorted successfully'
     }
     return HttpResponse(json.dumps(data, indent=4), content_type='application/json')
