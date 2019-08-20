@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from users.models import Profile
 from django.db.utils import IntegrityError
+from users.forms import ProfileForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -44,8 +45,28 @@ def signup(request):
     return render(request, 'users/signup.html')
 
 def update_profile(request):
-    return render(request,'users/update_profile.html')
-
+    profile = request.user.profile
+    
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            profile.website = data['website']
+            profile.biography = data['biography']
+            profile.picture = data['picture']
+            profile.save()
+            return redirect('update_profile')
+    else:
+        form = ProfileForm()
+    return render(
+        request = request,
+        template_name ='users/update_profile.html',
+        context={
+            'profile': profile,
+            'user' : request.user,
+            'form' : form
+        }
+    )
 
 @login_required
 def logout_view(request):
