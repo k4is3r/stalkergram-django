@@ -1,0 +1,9 @@
+appdirs==1.4.3
+attrs==19.1.0
+black==19.3b0
+Click==7.0
+Django==2.2.4
+Pillow==6.1.0
+pytz==2019.2
+sqlparse==0.3.0
+toml==0.10.0
