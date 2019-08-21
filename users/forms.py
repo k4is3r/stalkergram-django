@@ -31,7 +31,7 @@ class SignupForm(forms.Form):
         return data
 
     def save(self):
-        data = data.clean_data()
+        data = self.cleaned_data
         data.pop('password_confirmation')
         user = User.objects.create_user(**data)
         profile = Profile(user = user)
