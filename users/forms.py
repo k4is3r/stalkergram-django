@@ -4,7 +4,7 @@ from django import forms
 
 #models
 from django.contrib.auth.models import User
-from platzigram.users.models import Profile
+from users.models import Profile
 
 class SignupForm(forms.Form):
     username = forms.CharField(min_length = 4, max_length = 50)
