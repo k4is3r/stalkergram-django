@@ -6,7 +6,7 @@
 {% if error %}
 <p class="alert alert-danger">{{ error }}</p>
 {% endif %}
-    <form action="{% url "login" %}" method="POST">
+    <form action="{% url "users:login" %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <input type="text" placeholder="Username" name="username" class="form-control">
@@ -16,5 +16,5 @@
         </div>
         <button class="btn-primary btn-block mt-5" type="submit">SignIn !</button>
     </form>
-    <p class="mt-4">Don't have and account yet?<a href="{% url "signup" %}">Sign Up here</a> </p>
+    <p class="mt-4">Don't have and account yet?<a href="{% url "users:signup" %}">Sign Up here</a> </p>
 {% endblock %}
