@@ -1,8 +1,7 @@
 #django
-from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, FormView, UpdateView
 
@@ -48,31 +47,13 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         username = self.object.user.username
         return reverse('users:detail', kwargs={'username':username})
 
+class LoginView(auth_views.LoginView):
+    template_name = 'users/login.html'
 
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(
-            request,
-            username = username,
-            password = password
-        )
-        if user:
-            login(request, user)
-            return redirect('posts:feed')
-        else:
-            return render(request, 'users/login.html', {'error':'Invalid Username and Password'})
-    return render(request, 'users/login.html')
+class LogoutView(LoginRequiredMixin,auth_views.LogoutView ):
+    template_name = 'users/logged_out.html'
 
-
-
-
-@login_required
-def logout_view(request):
-    logout(request)
-    return redirect('users:login')
 
 
 """old signup method change with class view
@@ -114,4 +95,24 @@ def update_profile(request):
             'form' : form
         }
     )
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(
+            request,
+            username = username,
+            password = password
+        )
+        if user:
+            login(request, user)
+            return redirect('posts:feed')
+        else:
+            return render(request, 'users/login.html', {'error':'Invalid Username and Password'})
+    return render(request, 'users/login.html')
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('users:login')
+
 """
