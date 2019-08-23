@@ -4,6 +4,6 @@ DEBUG = False
 
 ALLOWED_HOSTS =[]
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'static'
 
 MEDIA_URL = '/'
