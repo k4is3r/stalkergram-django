@@ -8,19 +8,11 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-6 p-4" id="profile-box">
-      <form
-        action="{% url 'users:update' %}"
-        method="POST"
-        enctype="multipart/form-data"
-      >
+      <form action="{% url "users:update" %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="media">
           {% if profile.picture %}
-          <img
-            src="{{ profile.picture.url }}"
-            class="rounded-circle"
-            height="50"
-          />
+          <img src="{{ profile.picture.url }}" class="rounded-circle" height="50"/>
           {% else%}
           <img
             src="{% static 'img/default-profile.png' %}"
@@ -41,7 +33,7 @@
 
         {% for error in form.picture.errors %}
         <div class="alert laert-danger">
-          <b>Picture: {{ error }}</b>
+          <b>Picture: </b>{{ error }}
         </div>
         {% endfor %}
         <hr />
