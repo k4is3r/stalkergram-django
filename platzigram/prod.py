@@ -1,4 +1,4 @@
-from platzigram.base import *
+from platzigram.settings import *
 
 DEBUG = False
 
