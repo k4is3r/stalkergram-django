@@ -39,7 +39,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
     template_name = 'users/update_profile.html'
     model = Profile
     fields = ['website','biography','phone_number','picture']
-
+    slug_field = 'username'
     def get_objetc(self):
         return self.request.user.profile
 
